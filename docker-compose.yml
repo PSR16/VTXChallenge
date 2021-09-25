@@ -9,9 +9,11 @@ services:
     environment:
       NODE_ENV: production
     ports:
-      - 3000:3000
+      - 8080:8080
     volumes:
       - .:/usr/src/app
+    links:
+      - articleDb
   articleDb:
     image: mongo:latest
     ports:
