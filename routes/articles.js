@@ -1,11 +1,15 @@
-var express = require('express');
-var router = express.Router();
-var { Article } = require('../models/articles');
+const express = require('express');
+const router = express.Router();
+const Articles = require('../models/articleModel');
 
-router.get('/', function (req, res, next) {
-    res.send("Hi there")
-    //const articles = await Article.find()
-    //res.render('index', {title: 'Articles', articles: articles} )
+router.get('/', async(req, res) => {
+    try {
+        const article = await Articles.find();
+        res.json(article)
+    } catch (err) {
+        console.log(err)
+        res.json("error")
+    }
 })
 
 module.exports = router;
