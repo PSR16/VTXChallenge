@@ -7,8 +7,7 @@ import React, { useState } from 'react'
 
 function App() {
   const [abstract, setAbstract] = useState('');
-  console.log(abstract)
-  //const abstract = "here we go"
+
   return (
     <div className="App">
       <Container>
@@ -17,7 +16,7 @@ function App() {
             <ArticleTable onArticleClick={setAbstract}/>
           </Col>
           <Col>
-            <AbstractView abstract={abstract} />
+            <AbstractView abstract={abstract}/>
           </Col>
         </Row>
       </Container>

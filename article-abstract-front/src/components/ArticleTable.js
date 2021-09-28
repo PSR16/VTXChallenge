@@ -30,7 +30,7 @@ function ArticleTable({onArticleClick}) {
                     'Content-type': 'application/json'
                 }
         }).then(res => res.json())
-        .then(response =>  onArticleClick(response))
+        .then(response =>  onArticleClick(response.text))
     }
 
     return (
