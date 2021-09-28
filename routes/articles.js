@@ -19,7 +19,7 @@ router.get('/', async(req, res) => {
 router.get('/:articleId', async (req, res) => {
     const articleId = req.params.articleId;
     const baseUrl = 'https://pubmed.ncbi.nlm.nih.gov/'
-    axios.get(baseUrl + req.params.articleId)
+    axios.get(baseUrl + articleId)
         .then((response) => {
             const html = response.data;
             const $ = cheerio.load(html)

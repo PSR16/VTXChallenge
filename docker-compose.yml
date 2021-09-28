@@ -14,13 +14,24 @@ services:
       - .:/usr/src/app
     links:
       - articleDb
+    depends_on:
+      - articleDb
+  client: 
+    image: abstract-front-end
+    build: 
+      context: article-abstract-front/
+      dockerfile: ./Dockerfile
+    ports: 
+      - 3000:3000
+    depends_on:
+      - vtxchallenge
   articleDb:
     image: mongo:latest
     ports:
       - 27017:27017
     volumes:
       - data:/data/db
+  
 
 volumes:
   data:
-
