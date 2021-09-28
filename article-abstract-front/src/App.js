@@ -1,7 +1,7 @@
 import './App.css';
 import ArticleTable from './components/ArticleTable';
 import AbstractView from './components/AbstractView';
-import { Container, Row, Col, Navbar } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState } from 'react'
 
@@ -10,10 +10,6 @@ function App() {
 
   return (
     <div className="App">
-      <Container>
-        <Navbar>
-        </Navbar>
-      </Container>
       <Container>
         <Row>
           <Col>

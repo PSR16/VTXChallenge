@@ -7,6 +7,7 @@ const articleRoute = require('./routes/articles')
 const hostname = '0.0.0.0'
 const port = 8080
 const url = 'mongodb://articleDb:27017/articles'
+
 //Database connection
 mongoose.connect(url, { useNewUrlParser: true})
 const db = mongoose.connection;
@@ -15,12 +16,12 @@ db.on('error', console.error.bind(console, 'Connection error'));
 db.once('open', function() {
   db.dropDatabase()
   //connected
-  console.log('Connected')
+  console.log('Connected to Database')
   articleIds.map((id) => {
     var article = new Articles(id);
     article.save(function (err, art){
       if (err) return console.log(err);
-      console.log(art.id + " saved to DB")
+      console.log("Article ID: " + art.id + " saved to DB")
     })
   });
 });
@@ -35,7 +36,5 @@ app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`)
   console.log(url)
 });
-
-app.get('/', articleRoute);
 
 app.use('/articles', articleRoute)

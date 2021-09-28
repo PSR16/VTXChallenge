@@ -43,9 +43,10 @@ function ArticleTable({onArticleClick}) {
     return (
         <div>
             <h1>Articles</h1>
+            <div>To view an abstract, click on an article ID in the table.</div>
             { 
                 isBusy ?
-                    <div> loading...</div>
+                    <div>loading...</div>
                     :
                     <Table striped bordered>
                         <thead>
