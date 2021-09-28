@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import {Table} from 'react-bootstrap';
 
-function ArticleTable() {
+function ArticleTable({onArticleClick}) {
     const [message, setArticles] = useState([]);
     const [isBusy, setBusy] = useState(true)
-    const [abstract, setAbstract] = useState('')
+   
     //const res = await fetch('http://localhost:8080/articles')
     //const articles = await res.json();
     useEffect(() => {
@@ -29,7 +30,7 @@ function ArticleTable() {
                     'Content-type': 'application/json'
                 }
         }).then(res => res.json())
-        .then(response =>  setAbstract(response))
+        .then(response =>  onArticleClick(response))
     }
 
     return (
@@ -37,7 +38,7 @@ function ArticleTable() {
             { 
                 isBusy ?
                     <div> waiting...</div>
-                    : <table>
+                    : <Table striped bordered>
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -56,7 +57,7 @@ function ArticleTable() {
                                 ))
                             }
                         </tbody>
-                    </table>
+                    </Table>
             }
         </div>
     )
