@@ -19,4 +19,4 @@ http://localhost:3000
 
 #### Hitting API directly using Postman
 - A GET request to http://localhost:8080/articles will return all articles
-- A GET request to http://localhost:8080/articles/<articleId> will return the abstract for an individual article
+- A GET request to http://localhost:8080/articles/:articleId will return the abstract for an individual article
