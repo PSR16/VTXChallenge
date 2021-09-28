@@ -11,24 +11,33 @@ function ArticleTable({onArticleClick}) {
             headers : { 
                 'Accept': 'application/json'
             }
-            }).then(res => {
+            })
+            .then(res => {
                 setBusy(false);
                 if (res.ok){
                     return res.json();
                 }
-            }).then(jsonRes => {
+            })
+            .then(jsonRes => {
                 setArticles(jsonRes);
             })
+            .catch((error) => {
+                console.log(error)
+            });
     }, []);
 
     async function getAbstract(id) {
-        await fetch('http://localhost:8080/articles/' + id, {
+        await fetch('/articles/' + id, {
                 method: 'GET',
                 headers: { 
                     'Content-type': 'application/json'
                 }
-        }).then(res => res.json())
+        })
+        .then(res => res.json())
         .then(response =>  onArticleClick(response.text))
+        .catch((error) => {
+            console.log(error)
+        });
     }
 
     return (
