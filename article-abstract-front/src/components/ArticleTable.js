@@ -5,8 +5,6 @@ function ArticleTable({onArticleClick}) {
     const [message, setArticles] = useState([]);
     const [isBusy, setBusy] = useState(true)
    
-    //const res = await fetch('http://localhost:8080/articles')
-    //const articles = await res.json();
     useEffect(() => {
         setBusy(true);
         fetch("/articles", {
@@ -35,10 +33,12 @@ function ArticleTable({onArticleClick}) {
 
     return (
         <div>
+            <h1>Articles</h1>
             { 
                 isBusy ?
-                    <div> waiting...</div>
-                    : <Table striped bordered>
+                    <div> loading...</div>
+                    :
+                    <Table striped bordered>
                         <thead>
                             <tr>
                                 <th>#</th>

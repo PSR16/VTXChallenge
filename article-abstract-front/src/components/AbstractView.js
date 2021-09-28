@@ -5,7 +5,7 @@ function AbstractView ({abstract}) {
     return (
         <div>
             <h1>Abstract</h1>
-            {abstract}
+            {abstract ? abstract : <div>No abstract available</div>}
         </div>
     )
 }
