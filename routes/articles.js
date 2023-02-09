@@ -21,9 +21,10 @@ router.get('/:articleId', async (req, res) => {
     const baseUrl = 'https://pubmed.ncbi.nlm.nih.gov/'
     axios.get(baseUrl + articleId)
         .then((response) => {
+            console.debug("Article Response complete")
             const html = response.data;
             const $ = cheerio.load(html)
-            const abstract = $('#enc-abstract').text().trim()
+            const abstract = $('#eng-abstract').text().trim()
             res.status(200).send({
                 text: abstract
             })

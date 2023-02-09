@@ -2,18 +2,18 @@ import React, { useState, useEffect } from 'react';
 import {Table} from 'react-bootstrap';
 
 function ArticleTable({onArticleClick}) {
-    const [message, setArticles] = useState([]);
-    const [isBusy, setBusy] = useState(true)
+    const [articles, setArticles] = useState([]);
+    const [isBusy, setBusyStatus] = useState(true)
    
     useEffect(() => {
-        setBusy(true);
+        setBusyStatus(true);
         fetch("/articles", {
             headers : { 
                 'Accept': 'application/json'
             }
             })
             .then(res => {
-                setBusy(false);
+                setBusyStatus(false);
                 if (res.ok){
                     return res.json();
                 }
@@ -57,8 +57,8 @@ function ArticleTable({onArticleClick}) {
                             </tr>
                         </thead>
                         <tbody>
-                            {message && 
-                                message.map((a, k) => (
+                            {articles && 
+                                articles.map((a, k) => (
                                     <tr key={a._id}>
                                         <td>{k+1}</td>
                                         <td>{a.type}</td>
